@@ -64,8 +64,19 @@ def classSizes(data):
 # Output: Return a list of tuples sorted by the number of students in that class in
 # descending order
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
+	counter = dict()
+	for item in data:
+		counter[item["Class"]] = counter.get(item["Class"], 0) + 1
+	
+	# convert data to a list of tuples
+	counterList = list()
+	for key, value in counter.items():
+		counterList.append((key, value))
 
-	pass
+	# sort list of tuples
+	counterList.sort(key=lambda tup: tup[1], reverse=True)
+	
+	return counterList
 
 
 def findMonth(a):
