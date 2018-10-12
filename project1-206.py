@@ -1,10 +1,44 @@
 import os
 import filecmp
-from dateutil.relativedelta import *
+# from dateutil.relativedelta import *
 from datetime import date
 
 
 def getData(file):
+	
+	# open file and clean line
+	dataFile = open(file, "r")
+	firstLine = dataFile.readline()
+	firstLine = firstLine.strip()
+	firstLineWordList = firstLine.split(",")
+	
+	# Assign values to first, last, email, class, and DOB values
+	first = firstLineWordList[0]
+	last = firstLineWordList[1]
+	email = firstLineWordList[2]
+	__class = firstLineWordList[3]
+	dOB = firstLineWordList[4]
+	
+	# list for dicts of names and infos
+	listOfDicts = []
+
+	# TODO: get the names and emails and classes and DOB into a list
+	for line in dataFile:
+
+		# put a line into a dictionary
+		roomDict = {}
+		line = line.strip()
+		lineList = line.split(",")
+		roomDict[first] = lineList[0]
+		roomDict[last] = lineList[1]
+		roomDict[email] = lineList[2]
+		roomDict[__class] = lineList[3]
+		roomDict[dOB] = lineList[4]
+
+		# add to list of dicts
+		listOfDicts.append(roomDict)
+	
+	return listOfDicts
 # get a list of dictionary objects from the file
 #Input: file name
 #Ouput: return a list of dictionary objects where
@@ -62,7 +96,7 @@ def findAge(a):
 
 ## We have provided simple test() function used in main() to print what each function returns vs. what it's supposed to return.
 def test(got, expected, pts):
-  score = 0;
+  score = 0
   if got == expected:
     score = pts
     print(" OK ", end=" ")
