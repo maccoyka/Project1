@@ -5,6 +5,10 @@ from datetime import date
 
 
 def getData(file):
+# get a list of dictionary objects from the file
+#Input: file name
+#Ouput: return a list of dictionary objects where
+#the keys are from the first row in the data. and the values are each of the other rows
 	
 	# open file and clean line
 	dataFile = open(file, "r")
@@ -39,19 +43,19 @@ def getData(file):
 		listOfDicts.append(roomDict)
 	
 	return listOfDicts
-# get a list of dictionary objects from the file
-#Input: file name
-#Ouput: return a list of dictionary objects where
-#the keys are from the first row in the data. and the values are each of the other rows
 
-	pass
+
+
+	
 
 def mySort(data,col):
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
-
-	pass
+	data = sorted(data, key = lambda name: name[col])
+	name = data[0]["First"] + " " + data[0]["Last"] 
+	
+	return name
 
 
 def classSizes(data):
