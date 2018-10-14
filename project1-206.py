@@ -106,9 +106,6 @@ def findMonth(a):
 # TODO: does this sort properly?
 def mySortPrint(a,col,fileName):
 	writeFile = open(fileName, 'w')
-
-	# write CSV headers
-	writeFile.write("First,Last,Email \n")
 	
 	# sorts file by col
 	a = sorted(a, key=lambda item: item[col])
