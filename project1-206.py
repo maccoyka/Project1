@@ -103,8 +103,6 @@ def findMonth(a):
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
 
-	pass
-
 def mySortPrint(a,col,fileName):
 #Similar to mySort, but instead of returning single
 #Student, the sorted data is saved to a csv file.
