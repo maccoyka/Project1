@@ -79,7 +79,26 @@ def classSizes(data):
 	return counterList
 
 
+# TODO: does this work properly? Uncertain if dates are being counted properly
 def findMonth(a):
+	countItems = dict()
+	# create a list of all dates 
+	for item in a:
+		# convert date items into a list of string numbers
+		dateString = item["DOB"]
+		dates = dateString.split("/")
+		# count dates
+		countItems[dates[0]] = countItems.get(dates[0], 0) + 1
+	
+	# convert dictionary to a list
+	sortList = list()
+	for key, item in countItems.items():
+		sortList.append((key, item))
+	
+	# sort items into descending order
+	sortList.sort(key=lambda item: item[1], reverse=True)
+	
+	return sortList[0][1]
 # Find the most common birth month form this data
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
