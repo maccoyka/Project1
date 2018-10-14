@@ -98,19 +98,32 @@ def findMonth(a):
 	# sort items into descending order
 	sortList.sort(key=lambda item: item[1], reverse=True)
 	
-	return sortList[0][1]
+	return int(sortList[0][0])
 # Find the most common birth month form this data
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
 
+# TODO: does this sort properly?
 def mySortPrint(a,col,fileName):
+	writeFile = open(fileName, 'w')
+
+	# write CSV headers
+	writeFile.write("First,Last,Email \n")
+	
+	# sorts file by col
+	a = sorted(a, key=lambda item: item[col])
+
+	for item in a:
+		writeFile.write(item["First"] + ',' + item["Last"] + ',' + item["Email"] + "\n")
+	
+	writeFile.close()
 #Similar to mySort, but instead of returning single
 #Student, the sorted data is saved to a csv file.
 # as fist,last,email
 #Input: list of dictionaries, col (key) to sort by and output file name
 #Output: No return value, but the file is written
 
-	pass
+	
 
 def findAge(a):
 # def findAge(a):
