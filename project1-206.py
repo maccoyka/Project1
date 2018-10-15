@@ -1,12 +1,13 @@
 import os
 import filecmp
-# from dateutil.relativedelta import *
-from datetime import date
+from dateutil.relativedelta import *
+import datetime
 
 
 def getData(file):
 # get a list of dictionary objects from the file
-#Input: file name
+#Input: file namey
+
 #Ouput: return a list of dictionary objects where
 #the keys are from the first row in the data. and the values are each of the other rows
 	
@@ -123,13 +124,34 @@ def mySortPrint(a,col,fileName):
 	
 
 def findAge(a):
+	today = datetime.date.today()
+	totalYears = 0
+	countValues = 0
+	for item in a:
+		# count how many birthdays exist
+		countValues += 1
+		
+		# get DOB
+		dateItem = item["DOB"]
+		dateList = dateItem.split("/")
+
+		# get delta of time
+		newDay = datetime.date(year=int(dateList[2]), month=int(dateList[0]), day=int(dateList[1]))
+		rd = relativedelta(today,newDay)
+		totalYears += rd.years
+
+	# return average
+	return round(totalYears / countValues)
+
+
+
 # def findAge(a):
 # Input: list of dictionaries
 # Output: Return the average age of the students and round that age to the nearest
 # integer.  You will need to work with the DOB and the current date to find the current
 # age in years.
 
-	pass
+	
 
 
 ################################################################
