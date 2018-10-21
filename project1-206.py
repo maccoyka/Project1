@@ -27,7 +27,6 @@ def getData(file):
 	# list for dicts of names and infos
 	listOfDicts = []
 
-	# TODO: get the names and emails and classes and DOB into a list
 	for line in dataFile:
 
 		# put a line into a dictionary
@@ -42,7 +41,7 @@ def getData(file):
 
 		# add to list of dicts
 		listOfDicts.append(roomDict)
-	
+	dataFile.close()
 	return listOfDicts
 
 
@@ -104,7 +103,7 @@ def findMonth(a):
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
 
-# TODO: does this sort properly?
+
 def mySortPrint(a,col,fileName):
 	writeFile = open(fileName, 'w')
 	
